@@ -105,6 +105,7 @@ internal class VideoController(HttpClient http)
 
         request.Content = new StringContent(
             // lang=json
+            // Backup client version = 1.60.19
             $$"""
             {
               "videoId": {{Json.Encode(videoId)}},
@@ -112,7 +113,7 @@ internal class VideoController(HttpClient http)
               "context": {
                 "client": {
                   "clientName": "ANDROID_VR",
-                  "clientVersion": "1.60.19",
+                  "clientVersion": "1.61.48",
                   "deviceMake": "Oculus",
                   "deviceModel": "Quest 3",
                   "osName": "Android",
@@ -132,7 +133,7 @@ internal class VideoController(HttpClient http)
         // https://github.com/iv-org/invidious/issues/3230#issuecomment-1226887639
         request.Headers.Add(
             "User-Agent",
-            "com.google.android.apps.youtube.vr.oculus/1.60.19 (Linux; U; Android 12L; Quest 3 Build/SQ3A.220605.009.A1) gzip"
+            "com.google.android.apps.youtube.vr.oculus/1.61.48 (Linux; U; Android 12; en_US; Oculus Quest 3; Build/SQ3A.220605.009.A1; Cronet/132.0.6808.3)"
         );
 
         using var response = await Http.SendAsync(request, cancellationToken);
